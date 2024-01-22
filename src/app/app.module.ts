@@ -14,13 +14,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { ApiService } from './api.service';
 import { EmployeeComponent } from './employee/employee.component';
+import { ShowEmployeeComponent } from './show-employee/show-employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EmployeeComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    ShowEmployeeComponent
   ],
   imports: [
     BrowserModule,

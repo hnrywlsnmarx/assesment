@@ -18,10 +18,10 @@
         <table width="100%" border="0">
             <tr>
                 <td>
-                    <p style="font-size: large; font-weight: bold;">Employee List</p><br>
-                    <!-- <button type="button" class="btn btn-sm btn-success">Create
-                        Employee</button> -->
-                        <a routerLink="/create" class="btn btn-sm btn-secondary">Create Employee</a>
+                    <p style="font-size: large; font-weight: bold;">
+                        Employee List
+                    </p>
+                    <a routerLink="/create" class="btn btn-sm btn-primary">Create Employee</a>
                 </td>
                 <td style="float: right;">
                     <form (ngSubmit)="search()">
@@ -39,18 +39,19 @@
     </div>
     <table class="" border="1">
         <tr>
-            
-            <td>Show &nbsp; <input type="text" class="" name="count" size="3" [(ngModel)]="setJumlahData"> &nbsp;
+
+            <td>Show &nbsp; <input type="number" class="" name="count" size="3" [(ngModel)]="setJumlahData"> &nbsp;
                 data</td>
-            <td><button style="float: right;" class="btn btn-sm btn-primary" type="submit" (click)="searchAndLimitData()">Set</button></td>
-            
+            <td><button style="float: right;" class="btn btn-sm btn-primary" type="submit"
+                    (click)="searchAndLimitData()">Set</button></td>
+
 
         </tr>
     </table>
     <br>
     <div class="table-responsive-lg">
         <table class="table table-bordered table-hover" border="1" width="100%">
-            <tr style="background-color: aquamarine;">
+            <tr style="background-color: rgb(211, 250, 237);">
                 <th>Username</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -62,8 +63,7 @@
                 <th>Description</th>
                 <th>Action</th>
             </tr>
-            <tr *ngFor="let employee of displayedEmployees"
-                style="padding: 2 4 4 5;">
+            <tr *ngFor="let employee of displayedEmployees" style="padding: 2 4 4 5;">
                 <td>{{ employee.userName }}</td>
                 <td>{{ employee.firstName }}</td>
                 <td>{{ employee.lastName }}</td>
@@ -75,7 +75,8 @@
                 <td>{{ employee.description }}</td>
                 <td>
                     <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                    <a href="" class="btn btn-sm btn-primary">Show</a>
+                    <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-primary">Show</a>
+                    <!-- <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-primary">Show</a> -->
                     <button onclick="return('Are you sure?')" type="submit"
                         class="btn btn-sm btn-danger">Delete</button>
                 </td>

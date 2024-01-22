@@ -26,4 +26,8 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/employees/limit=${limit}`);
   }
 
+  getEmployeeById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/employees/${id}`);
+  }
+
 }

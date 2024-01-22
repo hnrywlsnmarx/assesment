@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -21,7 +22,7 @@ export class EmployeeComponent implements OnInit {
   totalItems: number = 0;
   displayedEmployees: any[] = [];
 
-  constructor(private http: HttpClient, private apiService: ApiService) { }
+  constructor(private http: HttpClient, private apiService: ApiService, private router: Router) { }
 
   searchKeyword: string = '';
   searchStatus: string = '';
@@ -102,6 +103,19 @@ export class EmployeeComponent implements OnInit {
       },
       (error) => {
         console.error('Error searching employees:', error);
+      }
+    );
+  }
+
+  loadEmployeeDetails(employeeID: number): void {
+    console.log(employeeID);
+    this.apiService.getEmployeeById(employeeID).subscribe(
+      (result) => {
+        this.router.navigate(['/show', { employee: result }]);
+        console.log(result);
+      },
+      (error) => {
+        console.error('Error loading employee details:', error);
       }
     );
   }
