@@ -1,0 +1,24 @@
+<div class="container mt-5" style="opacity: 0.8 !important;">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header" style="text-align: center; background-color: #EAD327;">Login</div>
+        <div class="card-body" style="background-color: lightgrey;">
+          <div style="font-weight: bolder; font-size: larger; text-align: center;margin-bottom: 20px;color: grey;;">Employee Management</div>
+          <!-- <hr> -->
+          <form (ngSubmit)="login()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input class="form-control" type="text" id="username" [(ngModel)]="username" name="username" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input class="form-control" type="password" id="password" [(ngModel)]="password" name="password" required>
+            </div>
+            <div style="float: right;"><button class="btn btn-sm btn-primary" type="submit">Login</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

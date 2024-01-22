@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'fontes';
+    /* src: url('http://172.28.97.167:600/fonts/Ubuntu-Regular.ttf') format("truetype"); */
+    src: url('/assets/fonts/Quicksand-Medium.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+}
+
+body {
+    font-family: 'fontes' !important;
+    font-size: smaller;
+
+    background-image: url('/assets/img/cilik.png');
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-attachment: fixed;
+    background-position: center;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

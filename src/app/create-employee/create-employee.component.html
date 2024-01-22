@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="userName">Username:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <input type="text" id="userName" formControlName="userName" class="form-control"
+                            required="required" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="firstName">First Name:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <input type="text" id="firstName" formControlName="firstName" class="form-control"
+                            required="required" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="lastName">Last Name:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <input type="text" id="lastName" formControlName="lastName" class="form-control"
+                            required="required" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="email">Email:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <input type="text" id="email" formControlName="email" class="form-control"
+                            required="required" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="birthDate">Birth Date:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <mat-form-field class="example-full-width">
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" name="birthDate" placeholder="Choose a date" [formControl]="myBirthday" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="lastName">Basic Salary:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <input type="number" id="basicSalary" formControlName="basicSalary" class="form-control"
+                            required="required" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="status">Status:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <input type="text" id="status" formControlName="status" class="form-control"
+                            required="required" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="group">Group:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <select name="group" id="group" class="form-control" [formControl]="myDesc"  required>
+                            <option value="PT AOC">PT AOC</option>
+                            <option value="PT ASA">PT ASA</option>
+                            <option value="PT TAMIL">PT TAMIL</option>
+                            <option value="PT ROMBA">PT ROMBA</option>
+                            <option value="PT OADI">PT OADI</option>
+                            <option value="PT SLANK">PT SLANK</option>
+                            <option value="PT DEWA">PT DEWA</option>
+                            <option value="PT ABC">PT ABC</option>
+                            <option value="PT AOT">PT AOT</option>
+                            <option value="PT PHC">PT PHC</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="description">Description:</label>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <input type="text" id="description" formControlName="description" class="form-control"
+                        required="required" />
+                    </div>
+                </div>
+                <table class="table" border="0">
+                    <tr>
+                        <td style="float: right;">
+                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                        </td>
+                        <td></td>
+                        <td><a routerLink="/employee" class="btn btn-sm btn-secondary">Cancel</a></td>
+                    </tr>
+                </table>
+                <div style="align-items: center;">
+
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
