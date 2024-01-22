@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { ApiService } from '../api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-employee',
@@ -12,7 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CreateEmployeeComponent {
   employeeForm: FormGroup = new FormGroup({});
   myBirthday = new FormControl();
-  
+  employees: any[] = [];
+  totalItems: number = 0;
   myDesc = new FormControl();
   minDate = new Date(1900, 0, 1);
   tgl = new Date().getDate();
@@ -20,7 +22,7 @@ export class CreateEmployeeComponent {
   thn = new Date().getFullYear();
   maxDate = new Date(this.thn, this.bln, this.tgl);
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar, private http: HttpClient) {
     
 
     // console.log(this.myBirthday.value);
@@ -45,7 +47,15 @@ export class CreateEmployeeComponent {
   }
 
   onSubmit(): void {
-    
+    this.http.get<any[]>('http://localhost:3000/api/employees').subscribe(
+      (data) => {
+        this.employees = data;
+        this.totalItems = this.employees.length;
+      },
+      (error) => {
+        console.error('Error fetching employee data:', error);
+      }
+    );
     const newEmployeeData = this.employeeForm.value;
     console.log(newEmployeeData);
     console.log('New Employee Data:', newEmployeeData);
