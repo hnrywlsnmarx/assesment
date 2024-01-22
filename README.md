@@ -1,5 +1,8 @@
 # EmployeeManagement
 
+user: kimpul
+password: kimpul
+
 instal node_module
 create folder api
 
