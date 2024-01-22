@@ -70,8 +70,8 @@
                 <td>{{ employee.email }}</td>
                 <td>{{ employee.birthDate }}</td>
                 <td>{{ employee.basicSalary }}</td>
-                <td>{{ employee.status }}</td>
-                <td>{{ employee.group }}</td>
+                <td>{{ employee.marital_status }}</td>
+                <td>{{ employee.emp_group }}</td>
                 <td>{{ employee.description }}</td>
                 <td>
                     <a href="#" class="btn btn-sm btn-warning">Edit</a>
@@ -84,7 +84,7 @@
         <div *ngIf="totalItems > 9">
             <button class="btn btn-sm btn-success" (click)="onPageChange(currentPage - 1)"
                 [disabled]="currentPage === 1">Previous</button>&nbsp;&nbsp;
-            <span class="badge bg-secondary">{{ currentPage }} / {{ totalItems / itemsPerPage }}</span>&nbsp;&nbsp;
+            <span class="badge bg-secondary">{{ currentPage }} / {{ (totalItems / itemsPerPage) }}</span>&nbsp;&nbsp;
             <button class="btn btn-sm btn-success" (click)="onPageChange(currentPage + 1)"
                 [disabled]="currentPage === totalItems / itemsPerPage">Next</button>
         </div>

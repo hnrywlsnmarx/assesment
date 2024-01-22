@@ -2,6 +2,7 @@ import { AfterViewInit, Component, NgModule, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-employee',
@@ -20,7 +21,7 @@ export class EmployeeComponent implements OnInit {
   totalItems: number = 0;
   displayedEmployees: any[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private apiService: ApiService) { }
 
   searchKeyword: string = '';
   searchStatus: string = '';
@@ -31,12 +32,12 @@ export class EmployeeComponent implements OnInit {
   }
 
   fetchEmployeeData(): void {
-    this.http.get<any[]>('http://localhost:3000/api/employees').subscribe(
+    this.http.get<any[]>('http://localhost:3000/employees').subscribe(
       (data) => {
         this.employees = data;
         this.totalItems = this.employees.length;
         this.paginateData();
-        this.search();
+        // this.search();
       },
       (error) => {
         console.error('Error fetching employee data:', error);
@@ -60,28 +61,49 @@ export class EmployeeComponent implements OnInit {
     this.displayedEmployees = this.employees.slice(startIndex, endIndex);
   }
 
+  // search(): void {
+  //   const filteredEmployees = this.employees.filter(employee =>
+  //     employee.firstName.toLowerCase().includes(this.searchKeyword.toLowerCase()) &&
+  //     employee.status.toLowerCase().includes(this.searchStatus.toLowerCase())
+  //   );
+
+  //   this.totalItems = filteredEmployees.length;
+  //   console.log(this.totalItems);
+  //   const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+  //   const endIndex = startIndex + this.itemsPerPage;
+  //   this.displayedEmployees = filteredEmployees.slice(startIndex, endIndex);
+
+  // }
+
   search(): void {
-    const filteredEmployees = this.employees.filter(employee =>
-      employee.firstName.toLowerCase().includes(this.searchKeyword.toLowerCase()) &&
-      employee.status.toLowerCase().includes(this.searchStatus.toLowerCase())
+    this.apiService.searchEmployees(this.searchKeyword, this.searchStatus).subscribe(
+      (filteredEmployees) => {
+        this.totalItems = filteredEmployees.length;
+        console.log(this.totalItems);
+        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        this.displayedEmployees = filteredEmployees.slice(startIndex, endIndex);
+      },
+      (error) => {
+        console.error('Error searching employees:', error);
+      }
     );
-
-    this.totalItems = filteredEmployees.length;
-    console.log(this.totalItems);
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.displayedEmployees = filteredEmployees.slice(startIndex, endIndex);
-
   }
 
   searchAndLimitData(): void {
-    const filteredData = this.employees.filter(employee =>
-      employee.firstName.toLowerCase().includes(this.searchKeyword.toLowerCase()) &&
-      employee.status.toLowerCase().includes(this.searchStatus.toLowerCase())
+    this.apiService.searchEmployees(this.searchKeyword, this.searchStatus).subscribe(
+      (filteredEmployees) => {
+        this.totalItems = filteredEmployees.length;
+        console.log(this.totalItems);
+        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        this.displayedEmployees = filteredEmployees.slice(startIndex, endIndex);
+        this.displayedEmployees = this.limitData(filteredEmployees);
+      },
+      (error) => {
+        console.error('Error searching employees:', error);
+      }
     );
-
-    this.displayedEmployees = this.limitData(filteredData);
-    
   }
 
   limitData(data: any[]): any[] {

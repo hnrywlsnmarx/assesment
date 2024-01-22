@@ -4,6 +4,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { ApiService } from '../api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -22,15 +23,15 @@ export class CreateEmployeeComponent {
   thn = new Date().getFullYear();
   maxDate = new Date(this.thn, this.bln, this.tgl);
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar, private http: HttpClient) {
-    
+  constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar, private http: HttpClient, private router: Router) {
+
 
     // console.log(this.myBirthday.value);
 
   }
 
   ngOnInit(): void {
-    
+
     this.employeeForm = this.fb.group({
       userName: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -38,7 +39,7 @@ export class CreateEmployeeComponent {
       email: ['', Validators.required],
       birthDate: ['1977-01-12', Validators.required],
       basicSalary: ['', Validators.required],
-      status:['', Validators.required],
+      marital_status: ['', Validators.required],
       group: ['PT AOT', Validators.required],
       description: ['', Validators.required]
 
@@ -47,15 +48,7 @@ export class CreateEmployeeComponent {
   }
 
   onSubmit(): void {
-    this.http.get<any[]>('http://localhost:3000/api/employees').subscribe(
-      (data) => {
-        this.employees = data;
-        this.totalItems = this.employees.length;
-      },
-      (error) => {
-        console.error('Error fetching employee data:', error);
-      }
-    );
+
     const newEmployeeData = this.employeeForm.value;
     console.log(newEmployeeData);
     console.log('New Employee Data:', newEmployeeData);
@@ -63,7 +56,8 @@ export class CreateEmployeeComponent {
       (response) => {
         console.log('Employee added successfully:', response);
         this.showSnackBar('sukses menyimpan');
-        
+        // this.router.navigate(['/employee']);
+
       },
       (error) => {
         console.error('Error adding employee:', error);
@@ -77,8 +71,8 @@ export class CreateEmployeeComponent {
       // duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: 'custom-snackbar' 
-      
+      panelClass: 'custom-snackbar'
+
     });
   }
 }
