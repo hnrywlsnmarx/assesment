@@ -44,10 +44,12 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <mat-form-field class="example-full-width">
-                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" name="birthDate" placeholder="Choose a date" [formControl]="myBirthday" required>
+                            <input matInput [min]="minDate" [max]="maxDate" formControlName="birthDate"
+                                [matDatepicker]="picker" name="birthDate" placeholder="Choose a date"
+                                [(ngModel)]="selectedBirthDate" required>
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
-                          </mat-form-field>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
@@ -61,11 +63,17 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="marital_status">Status:</label>
+                        <label for="marital_status">Marital Status:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <input type="text" id="marital_status" formControlName="marital_status" class="form-control"
-                            required="required" />
+                        <select name="marital_status" id="marital_status" class="form-control"
+                            formControlName="marital_status" [(ngModel)]="selectedStatus" required>
+                            <option value="" disabled>- Pilih -</option>
+                            <option value="Lajang">Lajang</option>
+                            <option value="Menikah">Menikah</option>
+                            <option value="Janda">Janda</option>
+                            <option value="Duda">Duda</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -73,7 +81,9 @@
                         <label for="group">Group:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <select name="group" id="group" class="form-control" [formControl]="myDesc"  required>
+                        <select name="emp_group" id="emp_group" class="form-control" formControlName="emp_group"
+                            [(ngModel)]="selectedGroup" required>
+                            <option value="" disabled>- Pilih -</option>
                             <option value="PT AOC">PT AOC</option>
                             <option value="PT ASA">PT ASA</option>
                             <option value="PT TAMIL">PT TAMIL</option>
@@ -94,7 +104,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <input type="text" id="description" formControlName="description" class="form-control"
-                        required="required" />
+                            required="required" />
                     </div>
                 </div>
                 <table class="table" border="0">

@@ -13,15 +13,19 @@ import { Router } from '@angular/router';
 })
 export class CreateEmployeeComponent {
   employeeForm: FormGroup = new FormGroup({});
-  myBirthday = new FormControl();
+  // myBirthday = new FormControl();
   employees: any[] = [];
   totalItems: number = 0;
-  myDesc = new FormControl();
+  // myDesc = new FormControl();
   minDate = new Date(1900, 0, 1);
   tgl = new Date().getDate();
   bln = new Date().getMonth();
   thn = new Date().getFullYear();
   maxDate = new Date(this.thn, this.bln, this.tgl);
+
+  selectedGroup: string = '';
+  selectedBirthDate: string = '';
+  selectedStatus: string = '';
 
   constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar, private http: HttpClient, private router: Router) {
 
@@ -37,13 +41,11 @@ export class CreateEmployeeComponent {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
-      birthDate: ['1977-01-12', Validators.required],
+      birthDate: [this.selectedBirthDate, Validators.required],
       basicSalary: ['', Validators.required],
-      marital_status: ['', Validators.required],
-      group: ['PT AOT', Validators.required],
+      marital_status: [this.selectedStatus, Validators.required],
+      emp_group: [this.selectedGroup, Validators.required],
       description: ['', Validators.required]
-
-
     });
   }
 
