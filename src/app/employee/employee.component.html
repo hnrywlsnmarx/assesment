@@ -1,55 +1,33 @@
-<style>
-    table,
-    th,
-    td {
-        border: 0px solid black;
-        /* border-collapse: collapse; */
-    }
-
-    th,
-    td {
-        padding: 10px;
-    }
-</style>
 <div class="container">
     <!-- <div class="row"> -->
     <div style="margin-bottom: 2px;">
-        <!--  -->
-        <table width="100%" border="0">
-            <tr>
-                <td>
-                    <p style="font-size: large; font-weight: bold;">
-                        Employee List
-                    </p>
-                    <a routerLink="/create" class="btn btn-sm btn-primary">Create Employee</a>
-                </td>
-                <td style="float: right;">
-                    <form (ngSubmit)="search()">
-                <td style="float: right; width: 100%;">
-                    <input class="" name="firstName" size="20" type="text" placeholder="Nama"
-                        [(ngModel)]="searchKeyword" /> &nbsp;&nbsp;
-                    <input class="" name="status" type="text" size="20" placeholder="Status Pernikahan"
-                        [(ngModel)]="searchStatus" /> <br><br>
-                    <button style="float: right;" class="btn btn-sm btn-success" type="submit">Search</button> <br>
-                </td>
-                </form>
-                </td>
-            </tr>
-        </table>
+        <div style="text-align: center; width: 100%; margin-bottom: 30px;">
+            <p style="font-size: large; font-weight: bold;">
+                Employee List
+            </p>
+        </div>
     </div>
-    <table class="" border="1">
+    <table width="100%" border="0">
         <tr>
-
             <td>Show &nbsp; <input type="number" class="" name="count" size="3" [(ngModel)]="setJumlahData"> &nbsp;
-                data</td>
-            <td><button style="float: right;" class="btn btn-sm btn-primary" type="submit"
-                    (click)="searchAndLimitData()">Set</button></td>
-        </tr>
+                data &nbsp; <button class="btn btn-sm btn-primary" type="submit"
+                (click)="searchAndLimitData()">Set</button></td>
+            <td style="float: right;">
+                <form (ngSubmit)="search()">
+            <td style="float: right; width: 100%;">
+                <input class="" name="firstName" size="20" type="text" placeholder="Nama"
+                    [(ngModel)]="searchKeyword" /> &nbsp;&nbsp;
+                <input class="" name="status" type="text" size="20" placeholder="Status Pernikahan"
+                    [(ngModel)]="searchStatus" /> <br><br>
+                <button style="float: right;" class="btn btn-sm btn-success" type="submit">Search</button> <br>
+            </td>
+            </form>
+            </td>
     </table>
-    <br>
-    <div class="table-responsive-lg">
-        <table class="table table-bordered table-hover" border="1" width="100%">
-            <tr style="background-color: rgb(211, 250, 237);">
+    
+    <div class="table-responsive-lg table-container">
+        <table class="table table-bordered table-hover table-condensed" class="tablez">
+            <tr style="background-color: rgb(224, 198, 255);">
                 <th>Username</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -61,25 +39,27 @@
                 <th>Description</th>
                 <th>Action</th>
             </tr>
-            <tr *ngFor="let employee of displayedEmployees" style="padding: 2 4 4 5;">
-                <td>{{ employee.userName }}</td>
-                <td>{{ employee.firstName }}</td>
-                <td>{{ employee.lastName }}</td>
-                <td>{{ employee.email }}</td>
-                <td>{{ employee.birthDate }}</td>
-                <td>{{ employee.basicSalary }}</td>
-                <td>{{ employee.marital_status }}</td>
-                <td>{{ employee.emp_group }}</td>
-                <td>{{ employee.description }}</td>
-                <td>
-                    <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-warning">Edit</a>
-                    <!-- <a (click)="load()" class="btn btn-sm btn-warning">Edit</a> -->
-                    <!-- <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-primary">Show</a> -->
-                    <a routerLink="/show/{{ employee.id }}" class="btn btn-sm btn-primary">Show</a>
-                    <!-- <a (click)="del()" class="btn btn-sm btn-danger">Delete</a> -->
-                    <a (click)="delEmployee(employee.id)" class="btn btn-sm btn-danger">Delete</a>
-                </td>
-            </tr>
+            <tbody>
+                <tr *ngFor="let employee of displayedEmployees" style="padding: 2 4 4 5;">
+                    <td>{{ employee.userName }}</td>
+                    <td>{{ employee.firstName }}</td>
+                    <td>{{ employee.lastName }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.birthDate }}</td>
+                    <td>{{ employee.basicSalary }}</td>
+                    <td>{{ employee.marital_status }}</td>
+                    <td>{{ employee.emp_group }}</td>
+                    <td>{{ employee.description }}</td>
+                    <td>
+                        <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-warning">Edit</a>
+                        <!-- <a (click)="load()" class="btn btn-sm btn-warning">Edit</a> -->
+                        <!-- <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-primary">Show</a> -->
+                        <a routerLink="/show/{{ employee.id }}" class="btn btn-sm btn-primary">Show</a>
+                        <!-- <a (click)="del()" class="btn btn-sm btn-danger">Delete</a> -->
+                        <a (click)="delEmployee(employee.id)" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
         </table>
         <div *ngIf="totalItems > 9">
             <button class="btn btn-sm btn-success" (click)="onPageChange(currentPage - 1)"

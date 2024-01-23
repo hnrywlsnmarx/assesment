@@ -33,7 +33,7 @@ export class LoginComponent {
       // duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: 'custom-snackbar' 
+      panelClass: ['snackbar-delete'] 
       
     });
   }

@@ -1,38 +1,19 @@
-<style>
-    table,
-    th,
-    td {
-        border: 0px solid black;
-        /* border-collapse: collapse; */
-    }
-
-    th,
-    td {
-        padding: 10px;
-    }
-</style>
 <div class="container">
-    <div>
-        <table width="100%" border="0">
-            <tr>
-                <td style="text-align: center;">
-                    <p style="font-size: large; font-weight: bold;">
-                        Employee List
-                    </p>
-                </td>
-            </tr>
-        </table>
+    <div style="margin-bottom: 2px;">
+        <div style="text-align: center; width: 100%; margin-bottom: 30px;">
+            <p style="font-size: large; font-weight: bold;">
+                Employee List
+            </p>
+        </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <div class="row" *ngIf="employee" >
+    <div class="row" *ngIf="employee" style="font-size: smaller ;">
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row row-xs align-items-center mg-b-20">
-                        <table class="table table-bordered table-hover" border="1" width="100%">
-                            <tr style="background-color: rgb(211, 250, 237);">
+                    <div class="pd-30 pd-sm-40 bg-gray-100">
+                        <div class="row row-xs align-items-center mg-b-20">
+                            <!-- <table class="table table-bordered table-hover" border="1" width="100%">
+                            <tr style="background-color: rgb(224, 198, 255);">
                                 <th>Username</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
@@ -42,20 +23,121 @@
                                 <th>Status</th>
                                 <th>Group</th>
                                 <th>Description</th>
-
                             </tr>
-                            <tr style="padding: 2 4 4 5;">
-                                <td>{{ employee.userName }}</td>
-                                <td>{{ employee.firstName }}</td>
-                                <td>{{ employee.lastName }}</td>
-                                <td>{{ employee.email }}</td>
-                                <td>{{ employee.birthDate }}</td>
-                                <td>{{ employee.basicSalary | currency:'Rp ':'symbol':'1.2-2' }}</td>
-                                <td>{{ employee.marital_status }}</td>
-                                <td>{{ employee.emp_group }}</td>
-                                <td>{{ employee.description }}</td>
-                            </tr>
-                        </table>
+                            <tbody>
+                                <tr style="padding: 2 4 4 5;">
+                                    <td>{{ employee.userName }}</td>
+                                    <td>{{ employee.firstName }}</td>
+                                    <td>{{ employee.lastName }}</td>
+                                    <td>{{ employee.email }}</td>
+                                    <td>{{ employee.birthDate }}</td>
+                                    <td>{{ employee.basicSalary | currency:'Rp ':'symbol':'1.2-2' }}</td>
+                                    <td>{{ employee.marital_status }}</td>
+                                    <td>{{ employee.emp_group }}</td>
+                                    <td>{{ employee.description }}</td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">User Name</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.userName }}
+                                </div>
+                            </div>
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">First Name</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.firstName }}
+                                </div>
+                            </div>
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">Last Name</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.lastName }}
+                                </div>
+                            </div>
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">Email</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.email }}
+                                </div>
+                            </div>
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">Birth Date</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.birthDate }}
+                                </div>
+                            </div>
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">Basic Salary</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.basicSalary | currency:'Rp ':'symbol':'1.2-2' }}
+                                </div>
+                            </div>
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">Marital Status</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.marital_status }}
+                                </div>
+                            </div>
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">Employee Group</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.emp_group }}
+                                </div>
+                            </div>
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">Description</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label mg-b-0">:</label>
+                                </div>
+                                <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                    {{ employee.description }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,6 +146,6 @@
     <br>
     <div style="float: right;">
         <!-- <a routerLink="/employee" class="btn btn-sm btn-secondary">OK</a> -->
-        <a (click)="goBack()" class="btn btn-sm btn-warning">OK</a>
+        <a (click)="goBack()" class="btn btn-sm btn-primary">OK</a>
     </div>
 </div>

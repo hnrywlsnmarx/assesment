@@ -1,0 +1,30 @@
+::ng-deep body {
+    background-image: url('/assets/img/cilik.png');
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-attachment: fixed;
+    background-position: center;
+    /* --table-width: 100%; */
+  }
+  
+  .table-container {
+    overflow-y: auto;
+    max-height: 600px;
+  }
+  
+  .tablez {
+    width: 100%;
+    font-size: smaller;
+  }
+  
+  table,
+  th,
+  td {
+      border: 0px solid black;
+      font-size: small;
+  }
+  
+  th,
+  td {
+      padding: 10px;
+  }
