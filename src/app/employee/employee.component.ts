@@ -13,7 +13,6 @@ import { AuthService } from '../auth.service';
 
 })
 
-
 export class EmployeeComponent implements OnInit {
 
   employees: any[] = [];
@@ -21,6 +20,7 @@ export class EmployeeComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalItems: number = 0;
+  totalPages: number = 0;
   displayedEmployees: any[] = [];
 
   constructor(private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService) { }
@@ -40,6 +40,7 @@ export class EmployeeComponent implements OnInit {
       (data) => {
         this.employees = data;
         this.totalItems = this.employees.length;
+        this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
         this.paginateData();
         // this.search();
       },

@@ -86,9 +86,9 @@
         <div *ngIf="totalItems > 9">
             <button class="btn btn-sm btn-success" (click)="onPageChange(currentPage - 1)"
                 [disabled]="currentPage === 1">Previous</button>&nbsp;&nbsp;
-            <span class="badge bg-secondary">{{ currentPage }} / {{ (totalItems / itemsPerPage) }}</span>&nbsp;&nbsp;
+            <span class="badge bg-secondary">{{ currentPage }} / {{ (totalPages) }}</span>&nbsp;&nbsp;
             <button class="btn btn-sm btn-success" (click)="onPageChange(currentPage + 1)"
-                [disabled]="currentPage === totalItems / itemsPerPage">Next</button>
+                [disabled]="currentPage === totalPages">Next</button>
         </div>
     </div>
     <br>
