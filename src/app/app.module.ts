@@ -15,6 +15,9 @@ import { MatInputModule } from '@angular/material/input';
 import { ApiService } from './api.service';
 import { EmployeeComponent } from './employee/employee.component';
 import { ShowEmployeeComponent } from './show-employee/show-employee.component';
+import { SearchService } from './search.service';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './shared/routing';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { ShowEmployeeComponent } from './show-employee/show-employee.component';
     MatInputModule,
     MatSnackBarModule
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService, SearchService,
+    {provide: RouteReuseStrategy, useClass: CustomReuseStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

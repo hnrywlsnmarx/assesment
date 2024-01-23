@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
 import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SearchService } from '../search.service';
 
 
 @Component({
@@ -24,27 +25,30 @@ export class EmployeeComponent implements OnInit {
   totalItems: number = 0;
   totalPages: number = 0;
   displayedEmployees: any[] = [];
-
-  constructor(private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
-
   searchKeyword: string = '';
   searchStatus: string = '';
   setJumlahData: number = 0;
+
+  constructor(private route: ActivatedRoute, private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService, private snackBar: MatSnackBar, private searchService: SearchService) { }
+
+
 
   ngOnInit(): void {
     // this.authService.isLoggedInUser();
     console.log(this.authService.isLoggedInUser());
     this.fetchEmployeeData();
+    // this.searchAndLimitData();
+    // this.search();
   }
 
   fetchEmployeeData(): void {
-    this.http.get<any[]>('http://localhost:3000/employees').subscribe(
+    this.apiService.fetchEmployees(this.searchKeyword, this.searchStatus).subscribe(
       (data) => {
         this.employees = data;
         this.totalItems = this.employees.length;
         this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
         this.paginateData();
-        // this.search();
+
       },
       (error) => {
         console.error('Error fetching employee data:', error);
@@ -90,6 +94,7 @@ export class EmployeeComponent implements OnInit {
         const startIndex = (this.currentPage - 1) * this.itemsPerPage;
         const endIndex = startIndex + this.itemsPerPage;
         this.displayedEmployees = filteredEmployees.slice(startIndex, endIndex);
+        this.searchService.searchResults = filteredEmployees;
       },
       (error) => {
         console.error('Error searching employees:', error);
@@ -149,7 +154,7 @@ export class EmployeeComponent implements OnInit {
       // duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: ['snackbar-edit'] 
+      panelClass: ['snackbar-edit']
     });
   }
 
@@ -158,7 +163,7 @@ export class EmployeeComponent implements OnInit {
       // duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: ['snackbar-delete'] 
+      panelClass: ['snackbar-delete']
     });
   }
 }

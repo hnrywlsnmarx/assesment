@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-show-employee',
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ShowEmployeeComponent implements OnInit {
   employee: any;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private searchService: SearchService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -24,5 +25,12 @@ export class ShowEmployeeComponent implements OnInit {
         }
       );
     });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/employee']);
+    this.searchService.searchKeyword = this.searchService.searchKeyword;
+    this.searchService.searchStatus = this.searchService.searchStatus;
+    this.searchService.searchResults = this.searchService.searchResults;
   }
 }

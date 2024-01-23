@@ -9,13 +9,17 @@ export class ApiService {
 
   private apiUrl = 'http://localhost:3000';
   cache: any;
-  
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
 
   addEmployee(employeeData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/employees`, employeeData);
 
+  }
+
+  fetchEmployees(keyword: string, status: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/employees/search?keyword=${keyword}&status=${status}`);
   }
 
   searchEmployees(keyword: string, status: string): Observable<any> {

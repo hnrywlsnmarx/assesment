@@ -8,7 +8,7 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
-  { path: 'employee', component: EmployeeComponent },
+  { path: 'employee', component: EmployeeComponent, data: {key: "id"} },
   { path: 'create', component: CreateEmployeeComponent },
   { path: 'show/:id', component: ShowEmployeeComponent }
 ];
