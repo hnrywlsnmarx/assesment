@@ -74,7 +74,7 @@ export class CreateEmployeeComponent {
       // duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: 'snackbar-delete'
+      panelClass: ['snackbar-delete']
 
     });
   }
@@ -84,7 +84,7 @@ export class CreateEmployeeComponent {
       // duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: 'snackbar-sukses'
+      panelClass: ['snackbar-sukses']
 
     });
   }

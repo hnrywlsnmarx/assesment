@@ -1,9 +1,24 @@
-.snackbar-delete {
-    background-color: red;
-    color: white; 
+
+::ng-deep .snackbar-sukses {
+    border-radius: 70%;
+    --mdc-snackbar-container-color: green;
   }
 
-  .snackbar-sukses {
-    background-color: green;
-    color: white; 
+  ::ng-deep .snackbar-delete {
+    border-radius: 70%;
+    --mdc-snackbar-container-color: red;
+  }
+
+  ::ng-deep .snackbar-delete button{
+    border-radius: 10%;
+    background-color: white;
+    
+    --mdc-mdc-snack-bar-button-color: #fff;
+  }
+  
+  ::ng-deep .snackbar-sukses button{
+    border-radius: 10%;
+    background-color: white;
+    color: white;
+    --mdc-mdc-snack-bar-button-color: green;
   }
