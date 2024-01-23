@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 import 'eonasdan-bootstrap-datetimepicker';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-employee',
@@ -22,13 +23,15 @@ export class EmployeeComponent implements OnInit {
   totalItems: number = 0;
   displayedEmployees: any[] = [];
 
-  constructor(private http: HttpClient, private apiService: ApiService, private router: Router) { }
+  constructor(private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService) { }
 
   searchKeyword: string = '';
   searchStatus: string = '';
   setJumlahData: number = 0;
 
   ngOnInit(): void {
+    // this.authService.isLoggedInUser();
+    console.log(this.authService.isLoggedInUser());
     this.fetchEmployeeData();
   }
 

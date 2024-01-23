@@ -12,10 +12,10 @@
     }
 </style>
 <div class="container">
-    <div style="margin-bottom: 2px;">
+    <div>
         <table width="100%" border="0">
             <tr>
-                <td>
+                <td style="text-align: center;">
                     <p style="font-size: large; font-weight: bold;">
                         Employee List
                     </p>
@@ -23,7 +23,6 @@
             </tr>
         </table>
     </div>
-
     <br>
     <br>
     <br>
@@ -51,7 +50,7 @@
                                 <td>{{ employee.lastName }}</td>
                                 <td>{{ employee.email }}</td>
                                 <td>{{ employee.birthDate }}</td>
-                                <td>{{ employee.basicSalary }}</td>
+                                <td>{{ employee.basicSalary | currency:'Rp ':'symbol':'1.2-2' }}</td>
                                 <td>{{ employee.marital_status }}</td>
                                 <td>{{ employee.emp_group }}</td>
                                 <td>{{ employee.description }}</td>
@@ -64,6 +63,6 @@
     </div>
     <br>
     <div style="float: right;">
-        <a routerLink="/employee" class="btn btn-sm btn-secondary">Back</a>
+        <a routerLink="/employee" class="btn btn-sm btn-secondary">OK</a>
     </div>
 </div>

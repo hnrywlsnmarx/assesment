@@ -13,10 +13,16 @@ export class ShowEmployeeComponent implements OnInit {
   constructor(private apiService: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      const employeeParam = params.get('employee');
-      this.employee = employeeParam ? params.get('employee') : null;
-      console.log(this.employee);
+    this.route.params.subscribe((params) => {
+      const employeeId = +params['id']; // '+' converts string to number
+      this.apiService.getEmployeeById(employeeId).subscribe(
+        (data) => {
+          this.employee = data;
+        },
+        (error) => {
+          console.error('Error fetching employee details', error);
+        }
+      );
     });
   }
 }

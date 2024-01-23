@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthGuard } from '../auth.guard';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [AuthGuard]
 })
 export class LoginComponent {
   username: string = '';
@@ -17,6 +19,7 @@ export class LoginComponent {
 
   login(): void {
     if (this.authService.login(this.username, this.password)) {
+      // console.log(this.authService.isLoggedInUser());
       console.log('Login berhasil');
       this.router.navigate(['/employee']);
     } else {
