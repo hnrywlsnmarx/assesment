@@ -1,0 +1,23 @@
+::ng-deep .snackbar-delete {
+  border-radius: 70%;
+  --mdc-snackbar-container-color: red;
+}
+
+::ng-deep .snackbar-edit {
+  border-radius: 70%;
+  --mdc-snackbar-container-color: yellow;
+}
+
+::ng-deep .snackbar-delete button{
+  border-radius: 10%;
+  background-color: white;
+  
+  --mdc-mdc-snack-bar-button-color: #fff;
+}
+
+::ng-deep .snackbar-edit button{
+  border-radius: 10%;
+  background-color: white;
+  color: white;
+  --mdc-mdc-snack-bar-button-color: yellow;
+}

@@ -74,12 +74,12 @@
                 <td>{{ employee.emp_group }}</td>
                 <td>{{ employee.description }}</td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                    <!-- <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-primary">Show</a> -->
+                    <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-warning">Edit</a>
+                    <!-- <a (click)="load()" class="btn btn-sm btn-warning">Edit</a> -->
                     <!-- <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-primary">Show</a> -->
                     <a routerLink="/show/{{ employee.id }}" class="btn btn-sm btn-primary">Show</a>
-                    <button onclick="return('Are you sure?')" type="submit"
-                        class="btn btn-sm btn-danger">Delete</button>
+                    <!-- <a (click)="del()" class="btn btn-sm btn-danger">Delete</a> -->
+                    <a (click)="delEmployee(employee.id)" class="btn btn-sm btn-danger">Delete</a>
                 </td>
             </tr>
         </table>
@@ -96,3 +96,4 @@
     <br>
     <!-- </div> -->
 </div>
+

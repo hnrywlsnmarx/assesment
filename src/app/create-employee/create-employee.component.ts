@@ -54,27 +54,37 @@ export class CreateEmployeeComponent {
     const newEmployeeData = this.employeeForm.value;
     console.log(newEmployeeData);
     console.log('New Employee Data:', newEmployeeData);
-    
+
     this.apiService.addEmployee(newEmployeeData).subscribe(
       (response) => {
         console.log('Employee added successfully:', response);
-        this.showSnackBar('sukses menyimpan');
+        this.showSnackBarSukses('sukses menyimpan');
         this.router.navigate(['/employee']);
 
       },
       (error) => {
         console.error('Error adding employee:', error);
-        this.showSnackBar('gagal menyimpan');
+        this.showSnackBarDelete('gagal menyimpan');
       }
     );
   }
 
-  private showSnackBar(message: string): void {
+  private showSnackBarDelete(message: string): void {
     this.snackBar.open(message, 'Tutup', {
       // duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: 'custom-snackbar'
+      panelClass: 'snackbar-delete'
+
+    });
+  }
+
+  private showSnackBarSukses(message: string): void {
+    this.snackBar.open(message, 'Tutup', {
+      // duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: 'snackbar-sukses'
 
     });
   }

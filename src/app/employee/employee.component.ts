@@ -5,6 +5,8 @@ import 'eonasdan-bootstrap-datetimepicker';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-employee',
@@ -23,7 +25,7 @@ export class EmployeeComponent implements OnInit {
   totalPages: number = 0;
   displayedEmployees: any[] = [];
 
-  constructor(private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService) { }
+  constructor(private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
 
   searchKeyword: string = '';
   searchStatus: string = '';
@@ -111,11 +113,16 @@ export class EmployeeComponent implements OnInit {
     );
   }
 
+  limitData(data: any[]): any[] {
+    this.totalItems = this.setJumlahData;
+    return data.slice(0, this.setJumlahData);
+  }
+
   loadEmployeeDetails(employeeID: number): void {
     console.log(employeeID);
     this.apiService.getEmployeeById(employeeID).subscribe(
       (result) => {
-        this.router.navigate(['/show', { employee: result }]);
+        this.showSnackBar('Edit employee ID No ' + employeeID);
         console.log(result);
       },
       (error) => {
@@ -124,8 +131,34 @@ export class EmployeeComponent implements OnInit {
     );
   }
 
-  limitData(data: any[]): any[] {
-    this.totalItems = this.setJumlahData;
-    return data.slice(0, this.setJumlahData);
+  delEmployee(employeeID: number): void {
+    console.log(employeeID);
+    this.apiService.getEmployeeById(employeeID).subscribe(
+      (result) => {
+        this.showSnackBarDel('Delete employee ID No ' + employeeID);
+        console.log(result);
+      },
+      (error) => {
+        console.error('Error loading employee details:', error);
+      }
+    );
+  }
+
+  private showSnackBar(message: string): void {
+    this.snackBar.open(message, 'Tutup', {
+      // duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['snackbar-edit'] 
+    });
+  }
+
+  private showSnackBarDel(message: string): void {
+    this.snackBar.open(message, 'Tutup', {
+      // duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['snackbar-delete'] 
+    });
   }
 }

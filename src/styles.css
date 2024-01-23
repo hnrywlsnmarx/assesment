@@ -19,5 +19,16 @@ body {
     background-attachment: fixed;
     background-position: center;
 }
+
+.snackbar-delete {
+    background-color: red;
+    color: white; 
+  }
+
+  .snackbar-edit {
+    background-color: yellow;
+    color: black; 
+  }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
