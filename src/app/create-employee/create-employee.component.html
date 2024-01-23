@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row mb-3">
         <div class="col-md-12">
-            <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" ngNativeValidate>
                 <div class="row">
                     <div class="col-md-12">
                         <label for="userName">Username:</label>
@@ -107,7 +107,7 @@
                             required="required" />
                     </div>
                 </div>
-                <table class="table" border="0">
+                <!-- <table class="table" border="0">
                     <tr>
                         <td style="float: right;">
                             <button type="submit" class="btn btn-sm btn-primary">Submit</button>
@@ -115,13 +115,15 @@
                         <td></td>
                         <td><a routerLink="/employee" class="btn btn-sm btn-secondary">Cancel</a></td>
                     </tr>
-                </table>
-                <div style="align-items: center;">
-
-
+                </table> -->
+                <div style="position: absolute; right: 50%; left: 45%;">
+                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                 </div>
-
+                <div style="position: absolute; right: 50%; left: 50%;">
+                    <a routerLink="/employee" class="btn btn-sm btn-secondary">Cancel</a>
+                </div>
             </form>
         </div>
     </div>
+    
 </div>
