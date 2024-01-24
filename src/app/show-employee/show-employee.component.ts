@@ -15,7 +15,7 @@ export class ShowEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const employeeId = +params['id']; // '+' converts string to number
+      const employeeId = +params['id'];
       this.apiService.getEmployeeById(employeeId).subscribe(
         (data) => {
           this.employee = data;

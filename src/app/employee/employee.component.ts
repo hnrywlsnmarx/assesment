@@ -34,12 +34,8 @@ export class EmployeeComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService, private snackBar: MatSnackBar, private searchService: SearchService) { }
 
   ngOnInit(): void {
-    // this.authService.isLoggedInUser();
     console.log(this.authService.isLoggedInUser());
     this.fetchEmployeeData();
-    // this.searchAndLimitData();
-    // this.search();
-
   }
 
   fetchEmployeeData(): void {
@@ -57,10 +53,6 @@ export class EmployeeComponent implements OnInit {
     );
 
   }
-
-  // onPageChange(page: number): void {
-  //   this.currentPage = page;
-  // }
 
   onPageChange(page: number): void {
     this.currentPage = page;
@@ -80,20 +72,6 @@ export class EmployeeComponent implements OnInit {
     this.displayedEmployees = this.employees.slice(startIndex, endIndex);
 
   }
-
-  // search(): void {
-  //   const filteredEmployees = this.employees.filter(employee =>
-  //     employee.firstName.toLowerCase().includes(this.searchKeyword.toLowerCase()) &&
-  //     employee.status.toLowerCase().includes(this.searchStatus.toLowerCase())
-  //   );
-
-  //   this.totalItems = filteredEmployees.length;
-  //   console.log(this.totalItems);
-  //   const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-  //   const endIndex = startIndex + this.itemsPerPage;
-  //   this.displayedEmployees = filteredEmployees.slice(startIndex, endIndex);
-
-  // }
 
   search(): void {
     this.apiService.searchEmployees(this.searchKeyword, this.searchStatus).subscribe(
