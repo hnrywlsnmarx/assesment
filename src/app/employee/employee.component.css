@@ -32,14 +32,16 @@
 }
 
 .cntr{
-  width: 95%;
+  width: 89%;
   position: relative;
   left: 3%;
 }
 
 .table-container {
   overflow-y: auto;
+  /* max-width: 200%; */
   max-height: 600px;
+  width: 1270px;
 }
 
 .tablez{
@@ -63,8 +65,8 @@ th,td{
   padding-top: 0px;
   padding-bottom: 5px;
   /* background-size: 20px 20px; */
-  /* float: right; */
-  position: relative;
-  left: 25%;
+  float: right;
+  /* position: relative;
+  left: 25%; */
   cursor: pointer;
 }

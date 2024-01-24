@@ -41,19 +41,19 @@
             <tr style="background-color: rgb(224, 198, 255);">
                 <th (click)="sortColumn('userName')">Username <mat-icon class="icon-rounded">sort</mat-icon></th>
                 <th (click)="sortColumn('firstName')">First Name<mat-icon class="icon-rounded">sort</mat-icon></th>
-                <th>Last Name</th>
-                <th>Email</th>
+                <th (click)="sortColumn('lastName')">Last Name<mat-icon class="icon-rounded">sort</mat-icon></th>
+                <th (click)="sortColumn('email')">Email<mat-icon class="icon-rounded">sort</mat-icon></th>
                 <th (click)="sortColumn('birthDate')">Birth Date<mat-icon class="icon-rounded">sort</mat-icon></th>
-                <th>Basic Salary</th>
-                <th>Status</th>
-                <th>Group</th>
+                <th (click)="sortColumn('basicSalary')">Basic Salary<mat-icon class="icon-rounded">sort</mat-icon></th>
+                <th (click)="sortColumn('marital_status')">Status<mat-icon class="icon-rounded">sort</mat-icon></th>
+                <th (click)="sortColumn('emp_group')">Group<mat-icon class="icon-rounded">sort</mat-icon></th>
                 <th (click)="sortColumn('description')">Description<mat-icon class="icon-rounded">sort</mat-icon></th>
                 <th style="min-width: 200px;">Action</th>
             </tr>
             <tbody>
                 <tr *ngFor="let employee of displayedEmployees">
                     <td>{{ employee.userName }}</td>
-                    <td>{{ employee.firstName }}</td>
+                    <td >{{ employee.firstName }}</td>
                     <td>{{ employee.lastName }}</td>
                     <td>{{ employee.email }}</td>
                     <td>{{ konversiFormatTanggal(employee.birthDate) }}</td>

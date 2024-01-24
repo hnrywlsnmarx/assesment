@@ -139,6 +139,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   sortColumn(column: string) {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
     if (this.sortedColumn === column) {
       this.isAscending = !this.isAscending;
     } else {
@@ -146,7 +148,7 @@ export class EmployeeComponent implements OnInit {
       this.sortedColumn = column;
     }
 
-    this.displayedEmployees.sort((a, b) => {
+    this.employees.sort((a, b) => {
       const valueA = a[column];
       const valueB = b[column];
 
@@ -158,6 +160,12 @@ export class EmployeeComponent implements OnInit {
         return 0;
       }
     });
+
+    this.totalItems = this.employees.length;
+    this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    this.paginateData();
+
+    // this.displayedEmployees = this.employees.slice(startIndex, endIndex);
   }
 
   private showSnackBar(message: string): void {
