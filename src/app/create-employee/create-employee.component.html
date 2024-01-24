@@ -10,7 +10,7 @@
         <div class="col-md-12 mb-5">
             <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" ngNativeValidate>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="userName">Username:</label>
                     </div>
                     <div class="col-md-12 mb-3">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="firstName">First Name:</label>
                     </div>
                     <div class="col-md-12 mb-3">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="lastName">Last Name:</label>
                     </div>
                     <div class="col-md-12 mb-3">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="email">Email:</label>
                     </div>
                     <div class="col-md-12 mb-3">
@@ -46,11 +46,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="birthDate">Birth Date:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-form-field class="mat-select-outline"appearance="fill">
                             <input matInput [min]="minDate" [max]="maxDate" formControlName="birthDate"
                                 [matDatepicker]="picker" name="birthDate" placeholder="Choose a date"
                                 [(ngModel)]="selectedBirthDate" required>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="lastName">Basic Salary:</label>
                     </div>
                     <div class="col-md-12 mb-3">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="marital_status">Marital Status:</label>
                     </div>
                     <div class="col-md-12 mb-3">
@@ -84,11 +84,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="group">Group:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-form-field appearance="fill" class="mat-select-outline">
                             <mat-label>Group</mat-label>
                             <input type="text" placeholder="Pick one" aria-label="Group" matInput
                                 [formControl]="empGroupCtrl" [matAutocomplete]="auto" [(ngModel)]="selectedGroup">
@@ -100,12 +100,13 @@
                         </mat-form-field>
                     </div>
                 </div>
+                
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-1">
                         <label for="description">Description:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-form-field  class="mat-select-outline" appearance="fill">
                             <input matInput [min]="minDate" [max]="maxDate" formControlName="description"
                                 [matDatepicker]="picker1" name="description" placeholder="Choose a date"
                                 [(ngModel)]="selectedDescription" required>

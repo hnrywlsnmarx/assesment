@@ -33,6 +33,9 @@
     /* --table-width: 100%; */
   }
 
-  ::ng-deep .mat-primary .mat-mdc-select-arrow{
-    color: blue;
-  }
+
+
+.mat-select-outline {
+  background-color: #dbd2d2;
+  color: #e7bdbd;
+}
