@@ -33,9 +33,11 @@
     /* --table-width: 100%; */
   }
 
-
-
 .mat-select-outline {
   background-color: #dbd2d2;
   color: #e7bdbd;
+}
+
+::ng-deep .mat-form-field-flex {
+  background-color: white !important;
 }
