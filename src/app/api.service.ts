@@ -18,6 +18,10 @@ export class ApiService {
 
   }
 
+  getEmployees(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/employees/`);
+  }
+
   fetchEmployees(keyword: string, status: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/employees/search?keyword=${keyword}&status=${status}`);
   }

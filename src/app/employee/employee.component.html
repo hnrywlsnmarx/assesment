@@ -17,9 +17,19 @@
         </div>
         <div class="col-lg-6" style="position: relative; left: 7%;">
             <form (ngSubmit)="search()">
-                <input class="" name="firstName" size="20" type="text" placeholder="Nama" [(ngModel)]="searchKeyword" />&nbsp;
-                <input class="" name="status" type="text" size="20" placeholder="Status Pernikahan"
-                    [(ngModel)]="searchStatus" /> &nbsp;
+                <input class="" name="firstName" size="20" type="text" placeholder="First Name"
+                    [(ngModel)]="searchKeyword" />&nbsp;
+                <!-- <input class="" name="status" type="text" size="20" placeholder="Status Pernikahan"
+                    [(ngModel)]="searchStatus" />  -->
+                <select  style='height: 25px;width: 125px;' name="marital_status" id="marital_status" 
+                    [(ngModel)]="searchStatus" required>
+                    <option value disabled="-">- Pilih -</option>
+                    <option value="Lajang">Lajang</option>
+                    <option value="Menikah">Menikah</option>
+                    <option value="Janda">Janda</option>
+                    <option value="Duda">Duda</option>
+                </select>
+                &nbsp;
                 <button class="btn btn-sm btn-success" type="submit">Search</button>
             </form>
         </div>

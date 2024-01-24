@@ -39,7 +39,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   fetchEmployeeData(): void {
-    this.apiService.fetchEmployees(this.searchKeyword, this.searchStatus).subscribe(
+    this.apiService.getEmployees().subscribe(
       (data) => {
         this.employees = data;
         this.totalItems = this.employees.length;
@@ -51,7 +51,6 @@ export class EmployeeComponent implements OnInit {
         console.error('Error fetching employee data:', error);
       }
     );
-
   }
 
   onPageChange(page: number): void {
