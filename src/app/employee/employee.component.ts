@@ -30,6 +30,9 @@ export class EmployeeComponent implements OnInit {
   searchStatus: string = '';
   setJumlahData: number = 0;
   formattedBirthDate: string = '';
+  sortedColumn: string = '';
+  isAscending: boolean = true;
+
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService, private snackBar: MatSnackBar, private searchService: SearchService) { }
 
@@ -133,6 +136,28 @@ export class EmployeeComponent implements OnInit {
         console.error('Error loading employee details:', error);
       }
     );
+  }
+
+  sortColumn(column: string) {
+    if (this.sortedColumn === column) {
+      this.isAscending = !this.isAscending;
+    } else {
+      this.isAscending = true;
+      this.sortedColumn = column;
+    }
+
+    this.displayedEmployees.sort((a, b) => {
+      const valueA = a[column];
+      const valueB = b[column];
+
+      if (valueA > valueB) {
+        return this.isAscending ? 1 : -1;
+      } else if (valueA < valueB) {
+        return this.isAscending ? -1 : 1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   private showSnackBar(message: string): void {

@@ -24,6 +24,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import moment from 'moment';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import moment from 'moment';
     MatAutocompleteModule,
     ReactiveFormsModule,
     AsyncPipe,
+    MatIconModule
   ],
   providers: [
     ApiService, SearchService, DatePipe, 
