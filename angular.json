@@ -31,10 +31,10 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.css",
-              "@angular/material/prebuilt-themes/purple-green.css",
+              
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css",
-              
+              "@angular/material/prebuilt-themes/purple-green.css",
               "src/app/login/login.component.css"
             ],
             "scripts": [

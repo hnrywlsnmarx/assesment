@@ -22,7 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
+import moment from 'moment';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { AsyncPipe } from '@angular/common';
     AsyncPipe,
   ],
   providers: [
-    ApiService, SearchService,
+    ApiService, SearchService, DatePipe, 
     { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }
   ],
   bootstrap: [AppComponent]

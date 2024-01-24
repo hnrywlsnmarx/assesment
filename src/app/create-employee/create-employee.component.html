@@ -1,4 +1,11 @@
 <div class="container">
+    <div style="margin-bottom: 2px;">
+        <div style="text-align: center; width: 100%; margin-bottom: 30px;">
+            <p style="font-size: large; font-weight: bold;">
+                Create Employee
+            </p>
+        </div>
+    </div>
     <div class="row mb-3">
         <div class="col-md-12 mb-5">
             <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" ngNativeValidate>
@@ -43,7 +50,7 @@
                         <label for="birthDate">Birth Date:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="example-full-width" appearance="fill">
                             <input matInput [min]="minDate" [max]="maxDate" formControlName="birthDate"
                                 [matDatepicker]="picker" name="birthDate" placeholder="Choose a date"
                                 [(ngModel)]="selectedBirthDate" required>
@@ -81,10 +88,10 @@
                         <label for="group">Group:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="fill" class="example-full-width">
                             <mat-label>Group</mat-label>
                             <input type="text" placeholder="Pick one" aria-label="Group" matInput
-                                [formControl]="empGroupCtrl" [matAutocomplete]="auto" [(ngModel)]="selectedGroup" class="example-panel-red">
+                                [formControl]="empGroupCtrl" [matAutocomplete]="auto" [(ngModel)]="selectedGroup">
                             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                                 @for (option of filteredOptions | async; track option) {
                                 <mat-option [value]="option">{{option}}</mat-option>
@@ -98,8 +105,13 @@
                         <label for="description">Description:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <input type="text" id="description" formControlName="description" class="form-control"
-                            required="required" />
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput [min]="minDate" [max]="maxDate" formControlName="description"
+                                [matDatepicker]="picker1" name="description" placeholder="Choose a date"
+                                [(ngModel)]="selectedDescription" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
                     </div>
                 </div>
                 <!-- <table class="table" border="0">

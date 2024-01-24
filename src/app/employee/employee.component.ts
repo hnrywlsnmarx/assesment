@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SearchService } from '../search.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -28,10 +29,9 @@ export class EmployeeComponent implements OnInit {
   searchKeyword: string = '';
   searchStatus: string = '';
   setJumlahData: number = 0;
+  formattedBirthDate: string = '';
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private apiService: ApiService, private router: Router, private authService: AuthService, private snackBar: MatSnackBar, private searchService: SearchService) { }
-
-
 
   ngOnInit(): void {
     // this.authService.isLoggedInUser();
@@ -39,6 +39,7 @@ export class EmployeeComponent implements OnInit {
     this.fetchEmployeeData();
     // this.searchAndLimitData();
     // this.search();
+
   }
 
   fetchEmployeeData(): void {
@@ -54,6 +55,7 @@ export class EmployeeComponent implements OnInit {
         console.error('Error fetching employee data:', error);
       }
     );
+
   }
 
   // onPageChange(page: number): void {
@@ -66,10 +68,17 @@ export class EmployeeComponent implements OnInit {
     this.search();
   }
 
+  konversiFormatTanggal(tanggal: string): string {
+    const tanggalObjek = new Date(tanggal);
+    const tanggalFormatted = `${tanggalObjek.getDate()}/${tanggalObjek.getMonth() + 1}/${tanggalObjek.getFullYear()}`;
+    return tanggalFormatted;
+  }
+
   paginateData(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.displayedEmployees = this.employees.slice(startIndex, endIndex);
+
   }
 
   // search(): void {

@@ -7,28 +7,58 @@
             </p>
         </div>
     </div>
-    <table width="100%" border="0">
+    <!-- <table width="100%" class="wl">
         <tr>
             <td><a routerLink="/create" class="btn btn-sm btn-primary">Create Employee</a></td>
             <td>Show &nbsp; <input type="number" class="" name="count" size="3" [(ngModel)]="setJumlahData"> &nbsp;
                 data &nbsp; <button class="btn btn-sm btn-primary" type="submit"
-                (click)="searchAndLimitData()">Set</button></td>
+                    (click)="searchAndLimitData()">Set</button></td>
             <td style="float: right;">
                 <form (ngSubmit)="search()">
             <td style="float: right; width: 100%;">
-                <input class="" name="firstName" size="20" type="text" placeholder="Nama"
-                    [(ngModel)]="searchKeyword" /> &nbsp;&nbsp;
+                <input class="" name="firstName" size="20" type="text" placeholder="Nama" [(ngModel)]="searchKeyword" />
+                &nbsp;&nbsp;
                 <input class="" name="status" type="text" size="20" placeholder="Status Pernikahan"
                     [(ngModel)]="searchStatus" /> <br><br>
                 <button style="float: right;" class="btn btn-sm btn-success" type="submit">Search</button> <br>
             </td>
             </form>
             </td>
+    </table> -->
 
-    </table>
-    
+    <!-- <div class="row row-xs align-items-center mg-b-20">
+        <div class="col-md-2">
+            <label class="form-label mg-b-0">User Name</label>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label mg-b-0">:</label>
+        </div>
+        <div class="col-md-8 mg-t-5 mg-md-t-0">
+            {{ employee.userName }}
+        </div>
+    </div> -->
+
+    <div class="row row-xs align-items-center mb-4">
+        <div class="col-lg-2">
+            <a routerLink="/create" class="btn btn-sm btn-primary">Create Employee</a>
+        </div>
+        <div class="col-lg-4">
+            Show &nbsp; <input type="number" class="" name="count" size="3" [(ngModel)]="setJumlahData"> &nbsp;
+            data &nbsp; <button class="btn btn-sm btn-primary" type="submit" (click)="searchAndLimitData()">Set</button>
+        </div>
+        <div class="col-lg-6" style="position: relative; left: 7%;">
+            <form (ngSubmit)="search()">
+                <input class="" name="firstName" size="20" type="text" placeholder="Nama" [(ngModel)]="searchKeyword" />&nbsp;
+                <input class="" name="status" type="text" size="20" placeholder="Status Pernikahan"
+                    [(ngModel)]="searchStatus" /> &nbsp;
+                <button class="btn btn-sm btn-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+
     <div class="table-responsive-lg table-container">
-        <table class="table table-bordered table-hover table-condensed" class="tablez">
+        <table class="table table-bordered table-hover table-condensed tablez">
             <tr style="background-color: rgb(224, 198, 255);">
                 <th>Username</th>
                 <th>First Name</th>
@@ -42,22 +72,19 @@
                 <th>Action</th>
             </tr>
             <tbody>
-                <tr *ngFor="let employee of displayedEmployees" style="padding: 2 4 4 5;">
+                <tr *ngFor="let employee of displayedEmployees">
                     <td>{{ employee.userName }}</td>
                     <td>{{ employee.firstName }}</td>
                     <td>{{ employee.lastName }}</td>
                     <td>{{ employee.email }}</td>
-                    <td>{{ employee.birthDate }}</td>
-                    <td>{{ employee.basicSalary }}</td>
+                    <td>{{ konversiFormatTanggal(employee.birthDate) }}</td>
+                    <td>{{ employee.basicSalary | currency:'Rp ':'symbol':'1.2-2' }}</td>
                     <td>{{ employee.marital_status }}</td>
                     <td>{{ employee.emp_group }}</td>
-                    <td>{{ employee.description }}</td>
-                    <td>
+                    <td>{{ konversiFormatTanggal(employee.description) }}</td>
+                    <td style="width: 10px;">
                         <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-warning">Edit</a>
-                        <!-- <a (click)="load()" class="btn btn-sm btn-warning">Edit</a> -->
-                        <!-- <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-primary">Show</a> -->
                         <a routerLink="/show/{{ employee.id }}" class="btn btn-sm btn-primary">Show</a>
-                        <!-- <a (click)="del()" class="btn btn-sm btn-danger">Delete</a> -->
                         <a (click)="delEmployee(employee.id)" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>

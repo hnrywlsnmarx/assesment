@@ -1,7 +1,8 @@
 
 ::ng-deep .snackbar-sukses {
     border-radius: 70%;
-    --mdc-snackbar-container-color: green;
+    --mdc-snackbar-container-color: rgb(97, 205, 97);
+    /* --mdc-snackbar-text-color: white; */
   }
 
   ::ng-deep .snackbar-delete {
@@ -32,8 +33,6 @@
     /* --table-width: 100%; */
   }
 
-  ::ng-deep .mat-focused .mat-form-field-label {color: white !important;}
-  ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {background-color: white !important; color: white !important }
-  ::ng-deep .mat-form-field-empty.mat-form-field-label { color: white !important;}
-  ::ng-deep .mat-form-field-ripple { background-color: white;}
-  ::ng-deep input.mat-input-element { color: white; }
+  ::ng-deep .mat-primary .mat-mdc-select-arrow{
+    color: blue;
+  }

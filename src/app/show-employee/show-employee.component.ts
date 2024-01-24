@@ -27,6 +27,12 @@ export class ShowEmployeeComponent implements OnInit {
     });
   }
 
+  konversiFormatTanggal(tanggal: string): string {
+    const tanggalObjek = new Date(tanggal);
+    const tanggalFormatted = `${tanggalObjek.getDate()}/${tanggalObjek.getMonth() + 1}/${tanggalObjek.getFullYear()}`;
+    return tanggalFormatted;
+  }
+
   goBack(): void {
     this.router.navigate(['/employee']);
     this.searchService.searchKeyword = this.searchService.searchKeyword;

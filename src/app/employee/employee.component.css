@@ -36,19 +36,17 @@
   max-height: 600px;
 }
 
-.tablez {
+.tablez{
   width: 100%;
-  font-size: smaller;
+  font-size: small;
+  /* border: 1px solid rgb(180, 174, 174); */
 }
 
-table,
-th,
-td {
-    border: 0px solid black;
-    font-size: small;
+th,td{
+  padding: 10px;
+  border: 1px solid rgb(180, 174, 174);
 }
 
-th,
-td {
-    padding: 10px;
+::ng-deep .dd{
+  border: 1px solid black;
 }
