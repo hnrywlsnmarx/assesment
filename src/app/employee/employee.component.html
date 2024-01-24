@@ -8,7 +8,7 @@
             </p>
         </div>
     </div>
-    <div class="row row-xs align-items-center mb-5">
+    <div class="row row-xs align-items-center mb-3">
         <div class="col-lg-2">
             <a routerLink="/create" class="btn btn-sm btn-primary">Create Employee</a>
         </div>
@@ -48,7 +48,7 @@
                 <th (click)="sortColumn('marital_status')">Status<mat-icon class="icon-rounded">sort</mat-icon></th>
                 <th (click)="sortColumn('emp_group')">Group<mat-icon class="icon-rounded">sort</mat-icon></th>
                 <th (click)="sortColumn('description')">Description<mat-icon class="icon-rounded">sort</mat-icon></th>
-                <th style="min-width: 200px;">Action</th>
+                <th style="min-width: 190px;">Action</th>
             </tr>
             <tbody>
                 <tr *ngFor="let employee of displayedEmployees">
@@ -61,7 +61,7 @@
                     <td>{{ employee.marital_status }}</td>
                     <td>{{ employee.emp_group }}</td>
                     <td>{{ konversiFormatTanggal(employee.description) }}</td>
-                    <td style="min-width: 200px;">
+                    <td>
                         <a routerLink="/show/{{ employee.id }}" class="btn btn-sm btn-primary">Show</a> &nbsp;
                         <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-warning">Edit</a> &nbsp;
                         <a (click)="delEmployee(employee.id)" class="btn btn-sm btn-danger">Delete</a>

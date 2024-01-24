@@ -41,12 +41,12 @@
   overflow-y: auto;
   /* max-width: 200%; */
   max-height: 600px;
-  width: 1270px;
+  width: 1280px;
 }
 
 .tablez{
   width: 100%;
-  font-size: small;
+  font-size: smaller;
   /* border: 1px solid rgb(180, 174, 174); */
 }
 
@@ -69,4 +69,28 @@ th,td{
   /* position: relative;
   left: 25%; */
   cursor: pointer;
+}
+
+.btn.btn-sm.btn-primary {
+  padding: 0.25rem 0.5rem; /* Sesuaikan padding sesuai kebutuhan */
+  font-size: 0.75rem; /* Sesuaikan ukuran font sesuai kebutuhan */
+  line-height: 1; /* Sesuaikan line-height sesuai kebutuhan */
+}
+
+.btn.btn-sm.btn-warning {
+  padding: 0.25rem 0.5rem; /* Sesuaikan padding sesuai kebutuhan */
+  font-size: 0.75rem; /* Sesuaikan ukuran font sesuai kebutuhan */
+  line-height: 1; /* Sesuaikan line-height sesuai kebutuhan */
+}
+
+.btn.btn-sm.btn-danger {
+  padding: 0.25rem 0.5rem; /* Sesuaikan padding sesuai kebutuhan */
+  font-size: 0.75rem; /* Sesuaikan ukuran font sesuai kebutuhan */
+  line-height: 1; /* Sesuaikan line-height sesuai kebutuhan */
+}
+
+.btn.btn-sm.btn-success {
+  padding: 0.25rem 0.5rem; /* Sesuaikan padding sesuai kebutuhan */
+  font-size: 0.75rem; /* Sesuaikan ukuran font sesuai kebutuhan */
+  line-height: 1; /* Sesuaikan line-height sesuai kebutuhan */
 }
