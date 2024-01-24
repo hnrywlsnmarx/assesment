@@ -5,11 +5,13 @@ import { ApiService } from '../api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable, startWith, map } from 'rxjs';
 
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
-  styleUrl: './create-employee.component.css'
+  styleUrl: './create-employee.component.css',
+
 })
 export class CreateEmployeeComponent {
   employeeForm: FormGroup = new FormGroup({});
@@ -27,6 +29,10 @@ export class CreateEmployeeComponent {
   selectedBirthDate: string = '';
   selectedStatus: string = '';
 
+  empGroupCtrl = new FormControl('');
+  options: string[] = ['PT Gomu Gomu', 'NIKA', 'Onigashima', 'Enies Lobby', 'Skypeia', 'Water Seven','Wall of Maria', 'Genkidama', 'Diable Jimble', 'Santoryuu'];
+  filteredOptions?: Observable<string[]>;
+
   constructor(private fb: FormBuilder, private apiService: ApiService, private snackBar: MatSnackBar, private http: HttpClient, private router: Router) {
 
 
@@ -36,6 +42,12 @@ export class CreateEmployeeComponent {
 
   ngOnInit(): void {
 
+    this.filteredOptions = this.empGroupCtrl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+
+    );
+
     this.employeeForm = this.fb.group({
       userName: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -44,15 +56,35 @@ export class CreateEmployeeComponent {
       birthDate: [this.selectedBirthDate, Validators.required],
       basicSalary: ['', Validators.required],
       marital_status: [this.selectedStatus, Validators.required],
-      emp_group: [this.selectedGroup, Validators.required],
+      emp_group: ['', Validators.required],
       description: ['', Validators.required]
     });
+
+    this.filteredOptions.subscribe(options => {
+      const empGroupControl = this.employeeForm.get('emp_group');
+  
+      if (empGroupControl) {
+        const currentValue = empGroupControl.value;
+  
+        if (options.includes(currentValue)) {
+        } else {
+          empGroupControl.setValue(options.length > 0 ? options[0] : '');
+        }
+      }
+    });
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   onSubmit(): void {
 
     const newEmployeeData = this.employeeForm.value;
-    console.log(newEmployeeData);
+    console.log(newEmployeeData.emp_group);
+    // debugger;
     console.log('New Employee Data:', newEmployeeData);
 
     this.apiService.addEmployee(newEmployeeData).subscribe(

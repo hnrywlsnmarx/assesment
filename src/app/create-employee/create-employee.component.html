@@ -81,21 +81,16 @@
                         <label for="group">Group:</label>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <select name="emp_group" id="emp_group" class="form-control" formControlName="emp_group"
-                            [(ngModel)]="selectedGroup" required>
-                            <option value="" disabled>- Pilih -</option>
-                            <option value="PT AOC">PT AOC</option>
-                            <option value="PT ASA">PT ASA</option>
-                            <option value="PT TAMIL">PT TAMIL</option>
-                            <option value="PT ROMBA">PT ROMBA</option>
-                            <option value="PT OADI">PT OADI</option>
-                            <option value="PT SLANK">PT SLANK</option>
-                            <option value="PT DEWA">PT DEWA</option>
-                            <option value="PT ABC">PT ABC</option>
-                            <option value="PT AOT">PT AOT</option>
-                            <option value="PT PHC">PT PHC</option>
-
-                        </select>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Group</mat-label>
+                            <input type="text" placeholder="Pick one" aria-label="Group" matInput
+                                [formControl]="empGroupCtrl" [matAutocomplete]="auto" [(ngModel)]="selectedGroup" class="example-panel-red">
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                @for (option of filteredOptions | async; track option) {
+                                <mat-option [value]="option">{{option}}</mat-option>
+                                }
+                            </mat-autocomplete>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
@@ -125,5 +120,5 @@
             </form>
         </div>
     </div>
-    
+
 </div>

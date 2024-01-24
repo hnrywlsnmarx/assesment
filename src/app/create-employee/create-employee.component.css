@@ -22,3 +22,18 @@
     color: white;
     --mdc-mdc-snack-bar-button-color: green;
   }
+
+  ::ng-deep body {
+    background-image: url('/assets/img/cilik.png');
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-attachment: fixed;
+    background-position: center;
+    /* --table-width: 100%; */
+  }
+
+  ::ng-deep .mat-focused .mat-form-field-label {color: white !important;}
+  ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {background-color: white !important; color: white !important }
+  ::ng-deep .mat-form-field-empty.mat-form-field-label { color: white !important;}
+  ::ng-deep .mat-form-field-ripple { background-color: white;}
+  ::ng-deep input.mat-input-element { color: white; }

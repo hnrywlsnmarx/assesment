@@ -22,4 +22,16 @@
     --mdc-mdc-snack-bar-button-color: yellow;
   }
 
+  body {
+    font-family: 'fontes' !important;
+    font-size: smaller;
+
+    background-image: url('/assets/img/bus.jpg');
+    /* background-image: url('/assets/img/cilik.png'); */
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+}
+
  

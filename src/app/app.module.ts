@@ -18,6 +18,11 @@ import { ShowEmployeeComponent } from './show-employee/show-employee.component';
 import { SearchService } from './search.service';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './shared/routing';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { AsyncPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -38,11 +43,19 @@ import { CustomReuseStrategy } from './shared/routing';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSelectModule,
+    MatSnackBarModule,
+    NgxMatSelectSearchModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe,
   ],
   providers: [
     ApiService, SearchService,
-    {provide: RouteReuseStrategy, useClass: CustomReuseStrategy}
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }
   ],
   bootstrap: [AppComponent]
 })
