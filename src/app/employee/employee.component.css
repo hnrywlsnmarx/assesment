@@ -31,6 +31,12 @@
   /* --table-width: 100%; */
 }
 
+.cntr{
+  width: 95%;
+  position: relative;
+  left: 3%;
+}
+
 .table-container {
   overflow-y: auto;
   max-height: 600px;
