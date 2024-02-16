@@ -17,7 +17,9 @@
             data &nbsp; <button class="btn btn-sm btn-primary" type="submit" (click)="searchAndLimitData()">Set</button>
         </div>
         <div class="col-lg-6" style="position: relative; left: 7%;">
-            <form (ngSubmit)="search()">
+            <!-- <form (ngSubmit)="searchAndLimitDataBySalary()"> -->
+                <form (ngSubmit)="search()">
+                
                 <input class="" name="firstName" size="20" type="text" placeholder="First Name"
                     [(ngModel)]="searchKeyword" />&nbsp;
                 <!-- <input class="" name="status" type="text" size="20" placeholder="Status Pernikahan"
@@ -30,6 +32,11 @@
                     <option value="Janda">Janda</option>
                     <option value="Duda">Duda</option>
                 </select>
+                <!-- <input class="" name="salary1" size="20" type="text" placeholder="Salary"
+                    [(ngModel)]="searchSalary1" />&nbsp;
+                    <input class="" name="salary2" size="20" type="text" placeholder="Salary"
+                    [(ngModel)]="searchSalary2" />&nbsp;
+                &nbsp; -->
                 &nbsp;
                 <button class="btn btn-sm btn-success" type="submit">Search</button>
             </form>
@@ -65,6 +72,7 @@
                         <a routerLink="/show/{{ employee.id }}" class="btn btn-sm btn-primary">Show</a> &nbsp;
                         <a (click)="loadEmployeeDetails(employee.id)" class="btn btn-sm btn-warning">Edit</a> &nbsp;
                         <a (click)="delEmployee(employee.id)" class="btn btn-sm btn-danger">Delete</a>
+                        <!-- <a (click)="remEmployee(employee.id)" class="btn btn-sm btn-danger">Delete</a> -->
                     </td>
                 </tr>
             </tbody>

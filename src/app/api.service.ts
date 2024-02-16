@@ -30,12 +30,22 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/employees/search?keyword=${keyword}&status=${status}`);
   }
 
+
+  
+  searchEmployeesSalary(keyword: string, salary1: number, salary2: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/employees/searchsalary?keyword=${keyword}&basicSalary=${salary1}&basicSalary=${salary2}`);
+  }
+
   limitEmployees(limit: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/employees/limit=${limit}`);
   }
 
   getEmployeeById(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/employees/${id}`);
+  }
+
+  remEmployeeById(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/employees/${id}`);
   }
 
 }

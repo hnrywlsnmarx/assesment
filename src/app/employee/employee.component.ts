@@ -27,6 +27,8 @@ export class EmployeeComponent implements OnInit {
   totalPages: number = 0;
   displayedEmployees: any[] = [];
   searchKeyword: string = '';
+  searchSalary1: number=0;
+  searchSalary2: number=0;
   searchStatus: string = '';
   setJumlahData: number = 0;
   formattedBirthDate: string = '';
@@ -107,6 +109,22 @@ export class EmployeeComponent implements OnInit {
     );
   }
 
+  searchAndLimitDataBySalary(): void {
+    this.apiService.searchEmployeesSalary(this.searchKeyword, this.searchSalary1, this.searchSalary2).subscribe(
+      (filteredEmployees) => {
+        this.totalItems = filteredEmployees.length;
+        console.log(this.totalItems);
+        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        this.displayedEmployees = filteredEmployees.slice(startIndex, endIndex);
+        this.displayedEmployees = this.limitData(filteredEmployees);
+      },
+      (error) => {
+        console.error('Error searching employees:', error);
+      }
+    );
+  }
+
   limitData(data: any[]): any[] {
     this.totalItems = this.setJumlahData;
     return data.slice(0, this.setJumlahData);
@@ -130,6 +148,19 @@ export class EmployeeComponent implements OnInit {
     this.apiService.getEmployeeById(employeeID).subscribe(
       (result) => {
         this.showSnackBarDel('Delete employee ID No ' + employeeID);
+        console.log(result);
+      },
+      (error) => {
+        console.error('Error loading employee details:', error);
+      }
+    );
+  }
+
+  remEmployee(employeeID: number): void{
+    console.log(employeeID);
+    this.apiService.remEmployeeById(employeeID).subscribe(
+      (result) => {
+        // this.showSnackBarDel('Delete employee ID No ' + employeeID);
         console.log(result);
       },
       (error) => {
